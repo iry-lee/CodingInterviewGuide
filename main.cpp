@@ -1,46 +1,24 @@
-#include <climits>
-#include <iostream>
-#include <string>
-#include <vector>
-#include <stack>
-#include <queue>
+#include <bits/stdc++.h>
 
 using namespace std;
 
-struct ListNode{
-    ListNode* next;
-    int val;
-};
-
 int main(void){
-    // 处理输入
-    int n, m;
-    cin >> n >> m;
-    cin.get(); 	// 别忘了吃掉这个回车
+    // 读入数据
+    int n;
+    cin >> n;
+    cin.get();
 
-    int posi = 1;
-    for(int i = 2; i <= n; i++){
-        int delta = m;
-        if(m >= i) delta = m % i;
-        posi = posi + delta;
-        if(posi > i) posi = posi % i;
-        // cout << posi << endl;
+    vector<vector<int>> data (n, vector<int>(2));
+
+    for(int i = 0; i < n; i++){
+        cin >> data[i][0] >> data[i][1];
+        cin.get();
     }
-    cout << posi;
+
+    // 排序
+    sort(data.begin(), data.end(), )
+
+    queue <vector<int>>
+
     return 0;
 }
-
-// 本题是“6-环形链表的约瑟夫问题-CD109”的进阶版本
-// 之前的简单版本中没有对时间复杂度的要求，所以在那里写出的解法的时间复杂度为 O(mn)
-// 这里进阶版本要求时间复杂度为 O(n)
-// 这个题实际上在Leetcode上做过，可以通过数学计算推导来实现。
-/* 下面有一个例子：
- * n = 7, m = 3
- * 1 2 (3) 4 5 6 7          4 位于第4列：因为这里3%7=3，所以删掉的是第3列，1+3=4，1是下面行的位置1，3是3%7的3
- * 4 5 (6) 7 1 2            4 位于第1列：因为这里3%6=3，所以删掉的是第3列，4+3=7，7%6=1，4是下面行的位置4，3是3%6的3
- * 7 1 (2) 4 5              4 位于第4列：因为这里3%5=3，所以删掉的是第3列，1+3=4，1是下面行的位置1，3是3%5的3
- * 4 5 (7) 1                4 位于第1列：因为这里3%4=3，所以删掉的是第3列，2+3=5，5%4=1，2是下面行的位置2，3是3%4的3
- * 1 4 (5)                  4 位于第2列：因为这里3%3=0，因为没有第0行，要加3，所以删掉的是第3列，2+0=2 2是下面行的位置2，0是3%3的0
- * 1 4 (1)                  4 位于第2列：因为这里3%2=1，所以删掉的是第1列，1+1=2 一个1是下面行的位置1，一个1是3%2的1
- * 4 4 (4)                  4 位于第1列：这里是一定的
- */
